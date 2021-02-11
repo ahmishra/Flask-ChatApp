@@ -5,7 +5,7 @@
         <script type="text/javascript" charset="utf-8">
             var socket;
             $(document).ready(function(){
-                socket = io.connect('https://openbrainstorm.herokuapp.com' + '/chat');
+                socket = io.connect('https://openbrainstorm.herokuapp.co' + '/chat');
                 socket.on('connect', function() {
                     socket.emit('joined', {});
                 });
