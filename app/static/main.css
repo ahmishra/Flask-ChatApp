@@ -1,0 +1,32 @@
+body {
+    background-color: #212121;
+    color: white;
+}
+
+.parallax {
+  height: 650px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron {
+	background-color: rgba(33, 33, 33, 0.5);
+}
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #212121;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

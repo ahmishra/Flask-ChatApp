@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<head>
+        <title>Brainstorming - Enter A Chat Room</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </head>
+</head>
+
+<style type="text/css">
+	body {
+	    background-color: #212121;
+	    color: white;
+	    background-image: url("{{ url_for('static', filename='bg1.png') }}");
+	}
+
+	.parallax {
+	  height: 650px;
+	  background-attachment: fixed;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	}
+
+	.jumbotron {
+		background-color: rgba(33, 33, 33, 0.5);
+	}
+
+	input {
+		width: 75%;
+		outline: none;
+		border: none;
+		outline: none;
+		padding: 10px;
+		border-radius: 10px;
+	}
+	.input {
+		text-align: left;
+	}
+
+	.btn {
+		width: auto;
+		padding: 10px;
+	}
+
+	.button-holder {
+        display: flex;
+	   	justify-content: center;
+	   	align-items: center;
+	   	height: 0px;
+	   	margin-top: 50px;
+    }
+
+    .form-control {
+		width: 75%;
+		margin: auto;
+	}
+
+	::-webkit-scrollbar {
+	  width: 5px;
+	}
+	::-webkit-scrollbar-track {
+	  background: #212121;
+	}
+	::-webkit-scrollbar-thumb {
+	  background: #888;
+	  border-radius: 2px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+	  background: #555;
+	}
+</style>
+
+<body>
+
+	<!-- NAV -->
+	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(2, 2, 2, 0.3)">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="{{ url_for('main.home') }}">Brainstorming</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="navbar-nav">
+	        <li class="nav-item">
+	          <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" href="{{ url_for('main.enter_room') }}">Enter A Room</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="container">
+		<div class="jumbotron" style="background-color: rgba(33, 33, 33, 0.5); padding: 50px; border-radius: 25px;
+			box-shadow: 5px 5px 50px #212121">
+			<form method="POST">
+			    {{ form.hidden_tag() }}
+			    {{ form.name.label }}<br><div class="input">{{ form.name() }}</div> {% for error in form.name.errors %}{{ error }}{% endfor %}<br><br>
+			    {{ form.room.label }}<br><div class="input">{{ form.room() }}</div> {% for error in form.room.errors %}{{ error }}{% endfor %}<br><br>
+			    <div class="form-group btn-holder">
+			    	{{ form.submit(class="btn btn-outline-primary btn-sm") }}
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

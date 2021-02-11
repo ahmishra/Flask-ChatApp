@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Brainstorming</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+
+    <body>
+        
+        <!-- NAV -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(2, 2, 2, 0.3)">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">Brainstorming</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="{{ url_for('main.home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('main.enter_room') }}">Enter A Room</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- CAROUSEL -->
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-bs-target="#carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carousel" data-bs-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename='brainstorming.jpg') }}" class="d-block w-100" alt="...", style="height: 100vh; filter: brightness(0.5);">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Welcome To Brainstorming.</h5>
+                <p>A Simple, Efficient, Fast, Easy, Sleek and Modern, NO SIGNUPs REQUIRED! free to use site.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='sta.png') }}" class="d-block w-100" alt="...", style="height: 100vh; filter: brightness(0.5);">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Using State of The Art.</h5>
+                <p>Using the latest and greatest version of Bootstrap 5 for CSS and Fast and reliable Framework Flask for the Back-end with the state of the art AES encryption algorithm used by the US Government to protect your data and privacy.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='world.png') }}" class="d-block w-100" alt="...", style="height: 100vh; filter: brightness(0.5);">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Discuss, Chat And Hangout With Others!</h5>
+                <p>Brainstorming is connected throughout the globe and any one can come and discuss, chat, hangout with others</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+
+
+        <div id="about">
+          <br><br>
+          <div>
+            <h2 style="text-align: center;">What is Brainstorming?</h2><br>
+            <p style="text-align: center;" class="container">"Brainstorming is a group creativity technique by which efforts are made to find a conclusion for a specific problem by gathering a list of ideas spontaneously contributed by its members." And we also implment a similar this website is built for people who are creative or are working in groups to find ideas and simply just to hang out with others, Brainstorming is connected throughout the world so that means that you can chat with anyone in the world when they are online.</p>
+          </div>
+          <br><br>
+          <div class="parallax" style="background-image: url({{ url_for('static', filename='bg1.png') }})"></div>
+
+          <br><br>
+          <div>
+            <h2 style="text-align: center;">What we use?</h2><br>
+            <p style="text-align: center;" class="container">We use the state of the art components used by Big Tech Companies like Google, Microsoft, Apple. We use Flask a Python's backend framework to manage user's and their messages, we use CSS3 and the latest version of Bootstrap v5.0 and Vanilla JS to ensure the best web experience for our users, and finally for your security we use the absolutely impenetrable Advanced Encryption Standard 256 encryption algorithm, it has 9 * 10^78 possible combinations if you use Tianhe-2(MilkyWay-2) the world's most powerful computer it would take millions of year to crack your privacy.</p>
+          </div>
+          <br><br>
+          <div class="parallax" style="background-image: url({{ url_for('static', filename='bg2.jpg') }})"></div>
+
+          <br><br>
+          <div>
+            <h2 style="text-align: center;">Join Today!</h2><br>
+            <p style="text-align: center;" class="container">What are you waiting for? Join Brainstorming Today and chat, discuss, find solutions, hang out with people through out the world!</p>
+            <hr>
+            <p style="text-align: center;">2021(C) Copyright, Made with <span style="color: red;">&#x2764;</span> By Aryan Mishra.</p>
+          </div>
+          <br><br>
+        </div>
+    </body>
+</html>

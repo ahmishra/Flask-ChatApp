@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            var socket;
+            $(document).ready(function(){
+                socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
+                socket.on('connect', function() {
+                    socket.emit('joined', {});
+                });
+                socket.on('status', function(data) {
+                    $('#chat').val($('#chat').val() + '<' + data.msg + '>\n');
+                    $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                });
+                socket.on('message', function(data) {
+                    $('#chat').val($('#chat').val() + data.msg + '\n');
+                    $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                });
+                $('#text').keypress(function(e) {
+                    var code = e.keyCode || e.which;
+                    if (code == 13) {
+                        text = $('#text').val();
+                        $('#text').val('');
+                        socket.emit('text', {msg: text});
+                    }
+                });
+            });
+            function leave_room() {
+                socket.emit('left', {}, function() {
+                    socket.disconnect();
+
+                    // go back to the login page
+                    window.location.href = "{{ url_for('main.enter_room') }}";
+                });
+            }
+        </script>
+        <title>Brainstorming - Room - {{ room }}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </head>
+
+    <style type="text/css">
+        body {
+            background-color: #212121;
+            color: white;
+            background-image: url("{{ url_for('static', filename='bg1.png') }}");
+            background-size: cover;
+        }
+
+        ::-webkit-scrollbar {
+          width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #212121;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+
+
+    </style>
+
+    <body>
+
+        <!-- NAV -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(2, 2, 2, 0.3)">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">Brainstorming</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{{ url_for('main.enter_room') }}">Enter A Room</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <br><br><div class="chat-msgs" style="text-align: center; padding: 10px;" >
+            <textarea id="chat" cols="80" rows="20" style="padding: 20px; border-radius: 20px;
+             background-color: rgba(33, 33, 33, .9); border: none; outline: none; color: white; resize: none;
+             border-top-right-radius: 0px; border-bottom-right-radius: 0px;" readonly></textarea>
+        </div>
+        <div class="sendmsg" style="text-align: center;">
+            <input id="text" size="80" style="border-radius: 5px; padding: 10px; border: none; outline: none; 
+            background-color: rgba(33, 33, 33, 0.9); color: white;" placeholder="Enter your message here"><br><br>
+        </div>
+        <p style="text-align: center;" onclick="leave_room();">
+            <button class="btn btn-outline-danger">Leave this room</button>
+        </p>
+        <br><br><br>
+    </body>
+</html>
