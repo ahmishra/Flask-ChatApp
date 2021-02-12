@@ -9,7 +9,7 @@ def create_app(debug=False):
     """Create an application."""
 
     # SETTING THE ENV VARIABLES
-    os.environ['HOST'] = '192.168.1.1'
+    os.environ['HOST'] = '192.168.1.9'
     os.environ['PORT'] = '5000'
     os.environ['SECRET_KEY'] = 'gjr39dkjn344_!67#'
 
